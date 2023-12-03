@@ -1,7 +1,7 @@
 'use client'
 
 import { uploadFileAction } from '@/utils/actions'
-import { buttonVariants } from '@/components/ui/button'
+import { Button, buttonVariants } from '@/components/ui/button'
 import {
   Dialog,
   DialogClose,
@@ -50,13 +50,10 @@ export const Uploader = () => {
   }
 
   const startSimulatedProgress = () => {
-    console.log('startSimulatedProgress')
     setUploadProgress(0)
 
     const interval = setInterval(() => {
-      console.log('interval')
       setUploadProgress((prev) => {
-        console.log('setUploadProgress', prev)
         if (prev >= 95) {
           clearInterval(interval)
           return prev
@@ -79,7 +76,7 @@ export const Uploader = () => {
           </DialogDescription>
         </DialogHeader>
 
-        <div className="max-w-full overflow-hidden py-2">
+        <div className="max-w-full overflow-hidden" onClick={openDropzone}>
           <Dropzone
             multiple={false}
             noClick={true}
@@ -89,19 +86,21 @@ export const Uploader = () => {
           >
             {({ getRootProps, getInputProps, acceptedFiles }) => (
               <div
-                onClick={openDropzone}
                 {...getRootProps()}
                 className={cn(
-                  'flex h-56 w-full max-w-full cursor-pointer flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed p-4 text-muted-foreground',
+                  'my-2 flex h-56 w-full max-w-full cursor-pointer flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed p-4 text-muted-foreground',
                   isHovering
-                    ? 'bg-primary/20 dark:bg-muted/40'
-                    : 'bg-muted dark:bg-muted/10'
+                    ? 'bg-primary/40 dark:bg-muted/40'
+                    : 'bg-muted dark:bg-muted/10 hover:dark:bg-muted/20'
                 )}
               >
-                <label className="mb-2" htmlFor="dropzone-file">
-                  <span className="font-semibold">Click to upload</span> or drag
-                  and drop
-                </label>
+                <Button
+                  className="mb-2 text-muted-foreground"
+                  variant="link"
+                  onClick={openDropzone}
+                >
+                  Click to upload or drag and drop
+                </Button>
 
                 {acceptedFiles.length > 0 && (
                   <div className="my-1.5 flex w-24 flex-row justify-center rounded-md border px-3 py-1.5">

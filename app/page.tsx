@@ -1,5 +1,7 @@
+import { buttonVariants } from '@/components/ui/button'
 import { createClient } from '@/utils/supabase/server'
 import { cookies } from 'next/headers'
+import Link from 'next/link'
 
 const Page = async () => {
   const cookie = cookies()
@@ -12,6 +14,11 @@ const Page = async () => {
       <p>
         {user ? `You are logged in as ${user.email}` : 'You are not logged in'}
       </p>
+      {user && (
+        <Link className={buttonVariants({ variant: 'link' })} href="/dashboard">
+          Go to dashboard
+        </Link>
+      )}
     </main>
   )
 }

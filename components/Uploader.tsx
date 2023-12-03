@@ -1,6 +1,5 @@
 'use client'
 
-import { uploadFileAction } from '@/utils/actions'
 import { Button, buttonVariants } from '@/components/ui/button'
 import {
   Dialog,
@@ -16,6 +15,8 @@ import { useState } from 'react'
 import Dropzone, { useDropzone } from 'react-dropzone'
 import { cn } from '@/utils/utils'
 import { Progress } from '@/components/ui/progress'
+import { v4 as uuid } from 'uuid'
+import { createClient } from '@/utils/supabase/client'
 
 export const Uploader = () => {
   const [open, setOpen] = useState(false)
@@ -25,14 +26,28 @@ export const Uploader = () => {
   const { open: openDropzone } = useDropzone()
 
   const uploadFile = async (file: File) => {
+    // Set UI state
     setIsHovering(false)
     setIsUploading(true)
     const progressInterval = startSimulatedProgress()
 
-    const formData = new FormData()
-    formData.append('file', file)
-    const { data, error } = await uploadFileAction(formData)
+    // Upload file
+    const supabase = createClient()
+    const user = (await supabase.auth.getUser()).data.user
 
+    if (!user) {
+      alert('You must be logged in to upload a file')
+      return
+    }
+
+    const path = `${user.id}/${file.name}.${uuid()}`
+    console.log(path)
+
+    const { data, error } = await supabase.storage
+      .from('Files')
+      .upload(path, file)
+
+    // File uploaded
     clearInterval(progressInterval)
 
     if (error) {

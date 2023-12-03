@@ -89,6 +89,7 @@ export const Uploader = () => {
           >
             {({ getRootProps, getInputProps, acceptedFiles }) => (
               <div
+                onClick={openDropzone}
                 {...getRootProps()}
                 className={cn(
                   'flex h-56 w-full max-w-full cursor-pointer flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed p-4 text-muted-foreground',
@@ -98,10 +99,8 @@ export const Uploader = () => {
                 )}
               >
                 <label className="mb-2" htmlFor="dropzone-file">
-                  <span className="pointer-events-none font-semibold">
-                    Click to upload
-                  </span>{' '}
-                  or drag and drop
+                  <span className="font-semibold">Click to upload</span> or drag
+                  and drop
                 </label>
 
                 {acceptedFiles.length > 0 && (

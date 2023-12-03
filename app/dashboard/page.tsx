@@ -25,7 +25,7 @@ const Page = async () => {
     })) || null
 
   return (
-    <main className="flex w-full max-w-4xl flex-1 flex-col items-center gap-10">
+    <main className="flex w-full max-w-6xl flex-1 flex-col items-center gap-10">
       <div className="flex w-full flex-row items-center justify-between">
         <h2 className="text-4xl font-bold">Your files</h2>
         <Uploader />

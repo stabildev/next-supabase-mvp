@@ -12,6 +12,7 @@ import { createClient } from '@/utils/supabase/client'
 import { SupabaseClient } from '@supabase/supabase-js'
 import { useState } from 'react'
 import { format } from 'date-fns'
+import { DeleteButton } from '@/components/DeleteButton'
 
 type FileObject = NonNullable<
   Awaited<
@@ -31,8 +32,6 @@ export const FilesList = ({ initialFiles }: FilesListProps) => {
   const supabase = createClient()
 
   const deleteFile = async (file: FileObject) => {
-    if (!confirm('Are you sure you want to delete this file?')) return
-
     const userId = (await supabase.auth.getUser()).data.user?.id
 
     console.log('userId', userId)
@@ -81,13 +80,7 @@ const FileCard = ({ file, deleteFile }: FileCardProps) => {
         Uploaded at {format(new Date(file.created_at), 'dd/MM/yyyy')}
       </CardContent>
       <CardFooter className="flex w-full flex-row justify-end border-t pb-3 pt-3">
-        <Button
-          variant="ghost"
-          className="hover:text-red-500"
-          onClick={() => deleteFile(file)}
-        >
-          Delete
-        </Button>
+        <DeleteButton onDelete={() => deleteFile(file)} />
       </CardFooter>
     </Card>
   )

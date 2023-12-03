@@ -7,7 +7,7 @@ const Page = async () => {
   const user = await auth.getUser().then((res) => res.data?.user)
 
   return (
-    <main className="flex flex-1 flex-col items-center justify-center gap-8">
+    <main className="flex max-w-6xl flex-1 flex-col items-center justify-center gap-8">
       <h2 className="text-4xl font-bold">Landing Page</h2>
       <p>
         {user ? `You are logged in as ${user.email}` : 'You are not logged in'}

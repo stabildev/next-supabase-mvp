@@ -90,8 +90,8 @@ export const Uploader = () => {
                 className={cn(
                   'my-2 flex h-56 w-full max-w-full cursor-pointer flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed p-4 text-muted-foreground',
                   isHovering
-                    ? 'bg-primary/40 dark:bg-muted/40'
-                    : 'bg-muted dark:bg-muted/10 hover:dark:bg-muted/20'
+                    ? 'bg-muted dark:bg-muted/40'
+                    : 'bg-muted/50 hover:bg-muted/70 dark:bg-muted/10 hover:dark:bg-muted/20'
                 )}
               >
                 <Button

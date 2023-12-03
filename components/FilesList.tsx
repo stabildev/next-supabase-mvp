@@ -52,7 +52,7 @@ export const FilesList = ({ initialFiles }: FilesListProps) => {
   }
 
   return files.length ? (
-    <div className="grid w-full gap-5 sm:grid-cols-3">
+    <div className="grid w-full gap-5 sm:grid-cols-2 xl:grid-cols-3">
       {files.map((file) => (
         <FileCard key={file.id} file={file} deleteFile={deleteFile} />
       ))}

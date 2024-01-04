@@ -1,8 +1,9 @@
-import { createClient } from '@/utils/supabase/server'
-import Link from 'next/link'
 import { cookies } from 'next/headers'
+import Link from 'next/link'
 import { redirect } from 'next/navigation'
+
 import { Button, buttonVariants } from '@/components/ui/button'
+import { createClient } from '@/utils/supabase/server'
 
 export default async function AuthButton() {
   const cookieStore = cookies()

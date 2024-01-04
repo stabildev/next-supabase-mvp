@@ -1,6 +1,6 @@
-import 'server-only'
 import { createServerClient, type CookieOptions } from '@supabase/ssr'
-import { cookies } from 'next/headers'
+import { type cookies } from 'next/headers'
+import 'server-only'
 
 export const createClient = (cookieStore: ReturnType<typeof cookies>) => {
   return createServerClient(

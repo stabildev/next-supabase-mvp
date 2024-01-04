@@ -1,5 +1,9 @@
 'use client'
 
+import { useState } from 'react'
+import Dropzone, { useDropzone } from 'react-dropzone'
+import { v4 as uuid } from 'uuid'
+
 import { Button, buttonVariants } from '@/components/ui/button'
 import {
   Dialog,
@@ -11,12 +15,9 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog'
-import { useState } from 'react'
-import Dropzone, { useDropzone } from 'react-dropzone'
-import { cn } from '@/utils/utils'
 import { Progress } from '@/components/ui/progress'
-import { v4 as uuid } from 'uuid'
 import { createClient } from '@/utils/supabase/client'
+import { cn } from '@/utils/utils'
 
 export const Uploader = () => {
   const [open, setOpen] = useState(false)

@@ -1,7 +1,8 @@
-import { buttonVariants } from '@/components/ui/button'
-import { createClient } from '@/utils/supabase/server'
 import { cookies } from 'next/headers'
 import Link from 'next/link'
+
+import { buttonVariants } from '@/components/ui/button'
+import { createClient } from '@/utils/supabase/server'
 
 const Page = async () => {
   const cookie = cookies()

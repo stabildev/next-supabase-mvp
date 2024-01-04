@@ -1,8 +1,9 @@
+import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
+
 import { FilesList } from '@/components/FilesList'
 import { Uploader } from '@/components/Uploader'
 import { createClient } from '@/utils/supabase/server'
-import { cookies } from 'next/headers'
-import { redirect } from 'next/navigation'
 
 const Page = async () => {
   const supabase = createClient(cookies())

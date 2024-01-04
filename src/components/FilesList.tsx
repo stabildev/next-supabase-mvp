@@ -1,6 +1,10 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
+import { type SupabaseClient } from '@supabase/supabase-js'
+import { format } from 'date-fns'
+import { useState } from 'react'
+
+import { DeleteButton } from '@/components/DeleteButton'
 import {
   Card,
   CardContent,
@@ -9,10 +13,6 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 import { createClient } from '@/utils/supabase/client'
-import { SupabaseClient } from '@supabase/supabase-js'
-import { useState } from 'react'
-import { format } from 'date-fns'
-import { DeleteButton } from '@/components/DeleteButton'
 
 type FileObject = NonNullable<
   Awaited<
@@ -72,7 +72,7 @@ interface FileCardProps {
 
 const FileCard = ({ file, deleteFile }: FileCardProps) => {
   return (
-    <Card className="flex flex-col">
+    <Card className="flex flex-col transition-all duration-300 hover:shadow-md dark:hover:border-muted-foreground/30">
       <CardHeader>
         <CardTitle>{file.name}</CardTitle>
       </CardHeader>

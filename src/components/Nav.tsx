@@ -1,7 +1,8 @@
-import AuthButton from '@/components/AuthButton'
-import { createClient } from '@/utils/supabase/server'
 import { cookies } from 'next/headers'
 import Link from 'next/link'
+
+import AuthButton from '@/components/AuthButton'
+import { createClient } from '@/utils/supabase/server'
 
 export const Nav = async () => {
   const user = (await createClient(cookies()).auth.getUser()).data?.user

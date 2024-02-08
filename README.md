@@ -3,7 +3,7 @@
 - Authentication using Supabase Auth
 - File Uploads using Supabase Storage
 
-# Set up Storage
+# Set up storage and policies
 
 - Create a new storage bucket and set the `STORAGE_BUCKET` environment variable to the bucket name.
 - Create the following storage policies for the bucket:

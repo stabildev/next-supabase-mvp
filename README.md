@@ -2,6 +2,8 @@
 
 - Authentication using Supabase Auth
 - File Uploads using Supabase Storage
+- Dark Mode
+- [Shadcn/ui](https://ui.shadcn.com)
 
 # Set up storage and policies
 
